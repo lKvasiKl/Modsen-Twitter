@@ -1,0 +1,8 @@
+{
+  "name": "modsen-twitter",
+  "version": "0.0.0",
+  "main": "index.js",
+  "repository": "https://github.com/lKvasiKl/Modsen-Twitter.git",
+  "author": "Kirill Vasko <kirill.vasko.2003@gmail.com>",
+  "license": "MIT"
+}
