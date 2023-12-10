@@ -13,7 +13,7 @@ const ThemeWrapper = ({ children, theme }: ThemeWrapperProps) => {
   return <ThemeProvider theme={currentTheme}>{children}</ThemeProvider>;
 };
 
-export const ThemeWrapperProvider = (children: Children) => {
+export const ThemeWrapperProvider = ({ children }: Children) => {
   const theme = useSelector(getThemeSelector);
 
   return <ThemeWrapper theme={theme}>{children}</ThemeWrapper>;

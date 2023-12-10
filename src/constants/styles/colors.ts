@@ -1,5 +1,6 @@
 export const COLORS = {
+  darkModeBackground: "#15202b",
   white: "#ffffff",
   black: "#000000",
-  darkModeBackground: "#15202b",
+  red: "#b91414",
 };
