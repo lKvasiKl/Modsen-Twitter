@@ -11,7 +11,7 @@ export default defineConfig({
   resolve: {
     alias: {
       assets: "/src/assets",
-      components: "/src/component",
+      components: "/src/components",
       constants: "/src/constants",
       firebase: "/src/firebase",
       pages: "/src/pages",
