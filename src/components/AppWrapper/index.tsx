@@ -1,5 +1,5 @@
 import { Provider } from "react-redux";
-import { HashRouter } from "react-router-dom";
+import { BrowserRouter } from "react-router-dom";
 
 import { ThemeWrapperProvider } from "components/ThemeWrapper";
 import { Children } from "components/ThemeWrapper/types";
@@ -9,13 +9,13 @@ import { store } from "store";
 
 export const AppWrapper = ({ children }: Children) => {
   return (
-    <HashRouter>
+    <BrowserRouter>
       <Provider store={store}>
         <ThemeWrapperProvider>
           <GlobalStyle />
           <ErrorBoundary>{children}</ErrorBoundary>
         </ThemeWrapperProvider>
       </Provider>
-    </HashRouter>
+    </BrowserRouter>
   );
 };
