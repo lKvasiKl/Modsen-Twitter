@@ -4,7 +4,7 @@ import { HashRouter } from "react-router-dom";
 import { ThemeWrapperProvider } from "components/ThemeWrapper";
 import { Children } from "components/ThemeWrapper/types";
 import { GlobalStyle } from "constants/styles/global";
-import ErrorBoundary from "components/ErrorBoundary";
+import { ErrorBoundary } from "components/ErrorBoundary";
 import { store } from "store";
 
 export const AppWrapper = ({ children }: Children) => {

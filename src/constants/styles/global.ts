@@ -1,6 +1,6 @@
 import styled, { createGlobalStyle, DefaultTheme } from "styled-components";
 
-import { contentCenter, displayFlex } from "./mixins";
+import { baseText, contentCenter, displayFlex, flexColumn } from "./mixins";
 
 const backgroundColor = ({ theme }: DefaultTheme) => theme.backgroundColor;
 
@@ -22,4 +22,14 @@ export const Container = styled.div`
   ${contentCenter}
   
   cursor: default;
+`;
+
+export const Button = styled.button`
+  ${flexColumn}
+  ${contentCenter}
+  ${baseText}
+  
+  background: transparent;
+  border: none;
+  cursor: pointer;
 `;

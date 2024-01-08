@@ -14,6 +14,7 @@ export default defineConfig({
       components: "/src/components",
       constants: "/src/constants",
       firebase: "/src/firebase",
+      layouts: "/src/layouts",
       pages: "/src/pages",
       store: "/src/store",
       types: "/src/types",
