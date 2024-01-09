@@ -37,3 +37,70 @@ export const REQUIRE_AUTH_NAVIGATION = {
     element: <div>FEED</div>,
   },
 };
+
+export const ADDITIONAL_NAVIGATION = {
+  About: {
+    name: "About",
+    path: "#",
+  },
+  Help: {
+    name: "Help Center",
+    path: "#",
+  },
+  Terms: {
+    name: "Terms of Service",
+    path: "#",
+  },
+  Privacy: {
+    name: "Privacy Policy",
+    path: "#",
+  },
+  Cookie: {
+    name: "Cookie Policy",
+    path: "#",
+  },
+  Ads: {
+    name: "Ads info",
+    path: "#",
+  },
+  Blog: {
+    name: "Blog",
+    path: "#",
+  },
+  Status: {
+    name: "Status",
+    path: "#",
+  },
+  Carrres: {
+    name: "Carrres",
+    path: "#",
+  },
+  Brand: {
+    name: "Brand Resources",
+    path: "#",
+  },
+  Advertsing: {
+    name: "Advertsing",
+    path: "#",
+  },
+  Marketing: {
+    name: "Marketing",
+    path: "#",
+  },
+  ForBusinnes: {
+    name: "Twitter for Business",
+    path: "#",
+  },
+  Developers: {
+    name: "Developers",
+    path: "#",
+  },
+  Directory: {
+    name: "Directory",
+    path: "#",
+  },
+  Settings: {
+    name: "Settings",
+    path: "#",
+  },
+};

@@ -33,3 +33,8 @@ export const Button = styled.button`
   border: none;
   cursor: pointer;
 `;
+
+export const Icon = styled.img`
+  width: 28px;
+  height: 28px;
+`;

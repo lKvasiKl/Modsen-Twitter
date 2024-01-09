@@ -21,6 +21,7 @@ export const contentCenter = css`
 
 export const baseText = css`
   color: ${textColor};
+  font-family: ${FONTS.fontFamily.roboto};
   font-size: ${FONTS.fontSize.s}px;
   font-weight: ${FONTS.fontWeight.m};
   font-style: normal;
