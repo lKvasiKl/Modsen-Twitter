@@ -1,4 +1,5 @@
-import styled, { DefaultTheme } from "styled-components";
+import styled, { DefaultTheme, css } from "styled-components";
+import { Link } from "react-router-dom";
 
 import { Container, Button } from "constants/styles/global";
 import {
@@ -17,6 +18,22 @@ const fontSizeL = ({ theme }: DefaultTheme) => theme.fonts.fontSize.l;
 const lightGray = ({ theme }: DefaultTheme) => theme.colors.lightGray;
 const opacityTwitterBlue = ({ theme }: DefaultTheme) =>
   theme.colors.opacityTwitterBlue;
+
+const commonButtonStyles = css`
+  gap: ${spaceS}px;
+  font-size: ${fontSizeL}px;
+  border: 1px solid ${lightGray};
+  border-radius: 50px;
+  flex-direction: row;
+  width: 100%;
+  max-width: 400px;
+  height: 60px;
+
+  &:hover {
+    background-color: ${opacityTwitterBlue};
+    border: 1px solid ${opacityTwitterBlue};
+  }
+`;
 
 export const HomePageWrapper = styled(Container)`
   flex-direction: column;
@@ -40,14 +57,11 @@ export const Banner = styled.img`
   width: 50%;
 `;
 
-export const Icon = styled.img`
-  background: transparent;
-`;
-
 export const Form = styled.form`
   ${flexColumn}
 
   gap: ${spaceL}px;
+  padding: 0 ${spaceM}px;
   width: 100%;
 `;
 
@@ -74,19 +88,14 @@ export const ButtonsWrapper = styled(Container)`
 `;
 
 export const SignUpButton = styled(Button)`
-  gap: ${spaceS}px;
-  font-size: ${fontSizeL}px;
-  border: 1px solid ${lightGray};
-  border-radius: 50px;
-  flex-direction: row;
-  width: 100%;
-  max-width: 400px;
-  height: 60px;
+  ${commonButtonStyles}
+`;
 
-  &:hover {
-    background-color: ${opacityTwitterBlue};
-    border: 1px solid ${opacityTwitterBlue};
-  }
+export const SignUpLinkButton = styled(Link)`
+  ${flexColumn}
+  ${contentCenter}
+  ${baseText}
+  ${commonButtonStyles}
 `;
 
 export const Footer = styled.footer`

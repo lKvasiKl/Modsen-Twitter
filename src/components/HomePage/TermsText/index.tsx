@@ -8,6 +8,8 @@ import { TermsWrapper, TermsContent } from "./styled";
 
 const { Terms, Privacy, Cookie } = ADDITIONAL_NAVIGATION;
 
+const { login } = ROUTES;
+
 export const TermsText = React.memo(() => {
   return (
     <TermsWrapper>
@@ -18,7 +20,7 @@ export const TermsText = React.memo(() => {
       </TermsContent>
 
       <TermsContent>
-        Already have an account? <Link to={ROUTES.login}>Log in</Link>
+        Already have an account? <Link to={login}>Log in</Link>
       </TermsContent>
     </TermsWrapper>
   );

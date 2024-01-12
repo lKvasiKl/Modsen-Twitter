@@ -3,6 +3,8 @@ import styled, { createGlobalStyle, DefaultTheme } from "styled-components";
 import { baseText, contentCenter, displayFlex, flexColumn } from "./mixins";
 
 const backgroundColor = ({ theme }: DefaultTheme) => theme.backgroundColor;
+const fontWeightS = ({ theme }: DefaultTheme) => theme.fonts.fontWeight.s;
+const fontSizeM = ({ theme }: DefaultTheme) => theme.fonts.fontSize.m;
 
 export const GlobalStyle = createGlobalStyle`
     * {
@@ -35,6 +37,15 @@ export const Button = styled.button`
 `;
 
 export const Icon = styled.img`
-  width: 28px;
-  height: 28px;
+  background: transparent;
+`;
+
+export const BaseInput = styled.input`
+  ${baseText}
+
+  font-size: ${fontSizeM}px;
+  font-weight: ${fontWeightS};
+  width: 100%;
+  border: none;
+  background: transparent;
 `;

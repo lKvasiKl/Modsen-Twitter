@@ -6,7 +6,7 @@ import { baseText } from "constants/styles/mixins";
 const spaceS = ({ theme }: DefaultTheme) => theme.spaces.s;
 const fontWeightS = ({ theme }: DefaultTheme) => theme.fonts.fontWeight.s;
 const fontSizeXS = ({ theme }: DefaultTheme) => theme.fonts.fontSize.xs;
-const twitterBlue = ({ theme }: DefaultTheme) => theme.colors.twitterBlue;
+const twitterBlueColor = ({ theme }: DefaultTheme) => theme.colors.twitterBlue;
 
 export const TermsWrapper = styled(Container)`
   gap: ${spaceS}px;
@@ -23,7 +23,7 @@ export const TermsContent = styled.p`
   font-weight: ${fontWeightS};
 
   a {
-    color: ${twitterBlue};
+    color: ${twitterBlueColor};
 
     &:hover {
       text-decoration: underline;

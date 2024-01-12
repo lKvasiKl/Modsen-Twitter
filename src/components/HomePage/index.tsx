@@ -1,4 +1,6 @@
 import { NavLinks } from "components/NavLinks";
+import { ROUTES } from "constants/routes";
+import { Icon } from "constants/styles/global";
 import { TermsText } from "./TermsText";
 
 import {
@@ -17,12 +19,14 @@ import {
   Footer,
   Form,
   HomePageWrapper,
-  Icon,
   Main,
   SignUpButton,
+  SignUpLinkButton,
   Subtitle,
   Title,
 } from "./styled";
+
+const { sign_up } = ROUTES;
 
 export const HomePage = () => {
   return (
@@ -38,7 +42,9 @@ export const HomePage = () => {
               <Icon {...GOOGLE_ICON_CONFIG} />
               {GOOGLE_SIGNUP_TEXT}
             </SignUpButton>
-            <SignUpButton>{EMAIL_SIGNUP_TEXT}</SignUpButton>
+            <SignUpLinkButton to={sign_up}>
+              {EMAIL_SIGNUP_TEXT}
+            </SignUpLinkButton>
           </ButtonsWrapper>
           <TermsText />
         </Form>

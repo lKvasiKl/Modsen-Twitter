@@ -7,6 +7,8 @@ import { RequireAuth } from "layouts/RequireAuth";
 
 import { RouterItem } from "./types";
 
+const { notFound } = ROUTES;
+
 const renderRoutes = (routes: RouterItem[]) => {
   return routes.map((item) => {
     const { path, element } = item;
@@ -26,7 +28,7 @@ export const Router = () => {
           {renderRoutes(Object.values(REQUIRE_AUTH_NAVIGATION))}
         </Route>
 
-        <Route element={<div>NOT FOUND</div>} path={ROUTES.notFound} />
+        <Route element={<div>NOT FOUND</div>} path={notFound} />
       </Routes>
     </Suspense>
   );
