@@ -2,7 +2,12 @@ import { useState } from "react";
 
 import { getBirthYears, getDaysInMonth } from "utils/dateData";
 
-import { MONTH, SelectorChangeEvent } from "./types";
+import {
+  BIRTHDAY_DAY_NAME,
+  BIRTHDAY_MONTH_NAME,
+  BIRTHDAY_YEAR_NAME,
+} from "../types";
+import { BirthdaySelectProps, MONTH, SelectorChangeEvent } from "./types";
 
 import {
   BdaySelector,
@@ -13,7 +18,7 @@ import {
 
 const CURRENT_YEAR = new Date().getFullYear();
 
-export const BirthdaySelect = () => {
+export const BirthdaySelect = ({ onChange }: BirthdaySelectProps) => {
   const [selectedMonth, setSelectedMonth] = useState(0);
   const [selectedYear, setSelectedYear] = useState(CURRENT_YEAR);
 
@@ -22,12 +27,22 @@ export const BirthdaySelect = () => {
     const numericMonthValue = MONTH[selectedValue as keyof typeof MONTH];
 
     setSelectedMonth(numericMonthValue);
+    onChange({ name: BIRTHDAY_MONTH_NAME, value: numericMonthValue });
+  };
+
+  const handleDayChange = (event: SelectorChangeEvent) => {
+    const selectedValue = event.target.value;
+    const numericDayValue = Number(selectedValue);
+
+    onChange({ name: BIRTHDAY_DAY_NAME, value: numericDayValue });
   };
 
   const handleYearChange = (event: SelectorChangeEvent) => {
     const selectedValue = event.target.value;
+    const numericYearValue = Number(selectedValue);
 
-    setSelectedYear(Number(selectedValue));
+    setSelectedYear(numericYearValue);
+    onChange({ name: BIRTHDAY_YEAR_NAME, value: numericYearValue });
   };
 
   const MONTH_OPTIONS = Object.values(MONTH)
@@ -54,7 +69,7 @@ export const BirthdaySelect = () => {
     <SelectContainer>
       <SelectWrapper>
         <BdayMonthSelector
-          name='birthdayMonth'
+          name={BIRTHDAY_MONTH_NAME}
           onChange={handleMonthChange}
           defaultValue=''
         >
@@ -65,7 +80,11 @@ export const BirthdaySelect = () => {
         </BdayMonthSelector>
       </SelectWrapper>
       <SelectWrapper>
-        <BdaySelector name='birthdayDay' defaultValue=''>
+        <BdaySelector
+          name={BIRTHDAY_DAY_NAME}
+          onChange={handleDayChange}
+          defaultValue=''
+        >
           <option value='' disabled hidden>
             Day
           </option>
@@ -74,7 +93,7 @@ export const BirthdaySelect = () => {
       </SelectWrapper>
       <SelectWrapper>
         <BdaySelector
-          name='birthdayYear'
+          name={BIRTHDAY_YEAR_NAME}
           onChange={handleYearChange}
           defaultValue=''
         >

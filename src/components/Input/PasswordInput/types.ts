@@ -4,8 +4,8 @@ export interface PasswordPostfixProps {
 }
 
 export interface PasswordInputProps {
-  name?: string;
+  name: string;
   label?: string;
   placeholder?: string;
-  onChange: () => void;
+  onChange: ({ name, value }: { name: string; value: string }) => void;
 }

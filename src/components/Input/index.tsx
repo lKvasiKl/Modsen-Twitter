@@ -21,6 +21,7 @@ export const Input = ({
     <InputWrapper>
       <BaseInput
         type={type}
+        name={name}
         placeholder={placeholder}
         onChange={handleChange}
       />

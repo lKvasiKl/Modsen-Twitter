@@ -1,5 +1,9 @@
 import { ChangeEvent } from "react";
 
+export interface BirthdaySelectProps {
+  onChange: ({ name, value }: { name: string; value: string | number }) => void;
+}
+
 export type SelectorChangeEvent = ChangeEvent<HTMLSelectElement>;
 
 export enum MONTH {

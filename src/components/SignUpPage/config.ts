@@ -52,3 +52,14 @@ export const PASSWORD_INPUTS_PROPS: PasswordInputsConfig[] = [
     placeholder: "***********",
   },
 ];
+
+export const DEFAULT_FORM_STATE = {
+  name: "",
+  email: "",
+  phone: "",
+  password: "",
+  confirmPassword: "",
+  birthdayMonth: "",
+  birthdayDay: "",
+  birthdayYear: "",
+};

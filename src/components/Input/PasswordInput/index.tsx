@@ -4,6 +4,7 @@ import EyeIcon from "assets/eye.svg?react";
 import EyeSlashIcon from "assets/eyeSlash.svg?react";
 import { BaseInput } from "constants/styles/global";
 
+import { InputChangeEvent } from "../types";
 import { PasswordInputProps, PasswordPostfixProps } from "./types";
 
 import { Label } from "../styled";
@@ -29,13 +30,19 @@ export const PasswordInput = ({
     setPasswordVisible((prevState) => !prevState);
   };
 
+  const handleChange = (event: InputChangeEvent) => {
+    const value = event.target.value;
+
+    onChange({ name, value });
+  };
+
   return (
     <PasswordInputWrapper>
       <BaseInput
         type={isPasswordVisible ? "text" : "password"}
         name={name}
         placeholder={placeholder}
-        onChange={onChange}
+        onChange={handleChange}
       />
       <Label>{label}</Label>
       <PasswordPostfix
