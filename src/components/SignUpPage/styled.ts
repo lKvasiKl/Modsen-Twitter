@@ -19,18 +19,17 @@ export const Main = styled.main`
   ${displayFlex}
   ${contentCenter}
   
-  height: 100vh;
+  height: 100%;
 `;
 
 export const Form = styled.form`
   ${flexColumn}
+  ${contentCenter}
 
   gap: ${spaceM}px;
   padding: ${spaceM}px;
-  border-radius: 10px;
   width: fit-content;
   max-width: 100%;
-  align-items: center;
 `;
 
 export const Title = styled.h1`

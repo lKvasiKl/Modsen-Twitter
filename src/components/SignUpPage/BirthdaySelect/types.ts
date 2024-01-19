@@ -1,7 +1,10 @@
 import { ChangeEvent } from "react";
+import { FieldValues, UseFormRegister } from "react-hook-form";
 
 export interface BirthdaySelectProps {
   onChange: ({ name, value }: { name: string; value: string | number }) => void;
+  error?: string;
+  register: UseFormRegister<FieldValues>;
 }
 
 export type SelectorChangeEvent = ChangeEvent<HTMLSelectElement>;

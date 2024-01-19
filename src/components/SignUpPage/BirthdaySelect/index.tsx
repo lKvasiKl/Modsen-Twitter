@@ -9,40 +9,34 @@ import {
 } from "../types";
 import { BirthdaySelectProps, MONTH, SelectorChangeEvent } from "./types";
 
-import {
-  BdaySelector,
-  BdayMonthSelector,
-  SelectContainer,
-  SelectWrapper,
-} from "./styled";
+import { BdaySelector, SelectContainer, SelectWrapper } from "./styled";
 
 const CURRENT_YEAR = new Date().getFullYear();
 
-export const BirthdaySelect = ({ onChange }: BirthdaySelectProps) => {
+export const BirthdaySelect = ({
+  onChange,
+  error,
+  register,
+}: BirthdaySelectProps) => {
   const [selectedMonth, setSelectedMonth] = useState(0);
   const [selectedYear, setSelectedYear] = useState(CURRENT_YEAR);
 
-  const handleMonthChange = (event: SelectorChangeEvent) => {
+  const isError = Boolean(error);
+
+  const handleSelectChange = (event: SelectorChangeEvent, type: string) => {
     const selectedValue = event.target.value;
-    const numericMonthValue = MONTH[selectedValue as keyof typeof MONTH];
+    const numericValue =
+      type === BIRTHDAY_MONTH_NAME
+        ? MONTH[selectedValue as keyof typeof MONTH]
+        : Number(selectedValue);
 
-    setSelectedMonth(numericMonthValue);
-    onChange({ name: BIRTHDAY_MONTH_NAME, value: numericMonthValue });
-  };
+    if (type === BIRTHDAY_MONTH_NAME) {
+      setSelectedMonth(numericValue);
+    } else if (type === BIRTHDAY_YEAR_NAME) {
+      setSelectedYear(numericValue);
+    }
 
-  const handleDayChange = (event: SelectorChangeEvent) => {
-    const selectedValue = event.target.value;
-    const numericDayValue = Number(selectedValue);
-
-    onChange({ name: BIRTHDAY_DAY_NAME, value: numericDayValue });
-  };
-
-  const handleYearChange = (event: SelectorChangeEvent) => {
-    const selectedValue = event.target.value;
-    const numericYearValue = Number(selectedValue);
-
-    setSelectedYear(numericYearValue);
-    onChange({ name: BIRTHDAY_YEAR_NAME, value: numericYearValue });
+    onChange({ name: type, value: numericValue });
   };
 
   const MONTH_OPTIONS = Object.values(MONTH)
@@ -67,23 +61,25 @@ export const BirthdaySelect = ({ onChange }: BirthdaySelectProps) => {
 
   return (
     <SelectContainer>
-      <SelectWrapper>
-        <BdayMonthSelector
-          name={BIRTHDAY_MONTH_NAME}
-          onChange={handleMonthChange}
+      <SelectWrapper $isError={isError}>
+        <BdaySelector
           defaultValue=''
+          {...register(BIRTHDAY_MONTH_NAME, {
+            onChange: (event) => handleSelectChange(event, BIRTHDAY_MONTH_NAME),
+          })}
         >
           <option value='' disabled hidden>
             Month
           </option>
           {MONTH_OPTIONS}
-        </BdayMonthSelector>
+        </BdaySelector>
       </SelectWrapper>
-      <SelectWrapper>
+      <SelectWrapper $isError={isError}>
         <BdaySelector
-          name={BIRTHDAY_DAY_NAME}
-          onChange={handleDayChange}
           defaultValue=''
+          {...register(BIRTHDAY_DAY_NAME, {
+            onChange: (event) => handleSelectChange(event, BIRTHDAY_DAY_NAME),
+          })}
         >
           <option value='' disabled hidden>
             Day
@@ -91,11 +87,12 @@ export const BirthdaySelect = ({ onChange }: BirthdaySelectProps) => {
           {DAY_OPTIONS}
         </BdaySelector>
       </SelectWrapper>
-      <SelectWrapper>
+      <SelectWrapper $isError={isError}>
         <BdaySelector
-          name={BIRTHDAY_YEAR_NAME}
-          onChange={handleYearChange}
           defaultValue=''
+          {...register(BIRTHDAY_YEAR_NAME, {
+            onChange: (event) => handleSelectChange(event, BIRTHDAY_YEAR_NAME),
+          })}
         >
           <option value='' disabled hidden>
             Year

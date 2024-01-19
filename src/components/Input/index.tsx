@@ -9,8 +9,13 @@ export const Input = ({
   type,
   name,
   placeholder,
+  error,
+  register,
   onChange,
 }: InputProps) => {
+  const isError = Boolean(error);
+  const LABEL_TEXT = error ? error : label;
+
   const handleChange = (event: InputChangeEvent) => {
     const value = event.target.value;
 
@@ -18,14 +23,13 @@ export const Input = ({
   };
 
   return (
-    <InputWrapper>
+    <InputWrapper $isError={isError}>
       <BaseInput
         type={type}
-        name={name}
         placeholder={placeholder}
-        onChange={handleChange}
+        {...register(name, { onChange: handleChange })}
       />
-      <Label>{label}</Label>
+      <Label $isError={isError}>{LABEL_TEXT}</Label>
     </InputWrapper>
   );
 };

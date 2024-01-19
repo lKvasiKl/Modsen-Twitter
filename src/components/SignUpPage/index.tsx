@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { Link } from "react-router-dom";
 
 import { Icon } from "constants/styles/global";
@@ -25,6 +25,9 @@ import {
 
 import { Form, Main, Subtitle, Text, TextWithLink, Title } from "./styled";
 
+import { REGISTER_FORM_SCHEMA } from "./validation";
+import { useFormValidation } from "hooks/useFormValidation";
+
 const { login } = ROUTES;
 
 export const SignUpPage = () => {
@@ -34,9 +37,19 @@ export const SignUpPage = () => {
     setForm((prevForm) => ({ ...prevForm, [name]: value }));
   };
 
+  const handleSubmitForm = () => {
+    reset();
+  };
+
+  const { register, handleSubmit, reset, isValid, getErrorMessage } =
+    useFormValidation({
+      validationSchema: REGISTER_FORM_SCHEMA,
+      onSubmit: handleSubmitForm,
+    });
+
   return (
     <Main>
-      <Form onSubmit={() => {}}>
+      <Form onSubmit={handleSubmit}>
         <Icon {...LOGO_ICON_CONFIG} />
         <Title>{TITLE}</Title>
         {INPUTS_PROPS.map(({ type, name, label, placeholder }) => (
@@ -47,6 +60,8 @@ export const SignUpPage = () => {
             type={type}
             placeholder={placeholder}
             onChange={handleChangeForm}
+            error={getErrorMessage(name)}
+            register={register}
           />
         ))}
         {PASSWORD_INPUTS_PROPS.map(({ name, label, placeholder }) => (
@@ -56,12 +71,14 @@ export const SignUpPage = () => {
             label={label}
             placeholder={placeholder}
             onChange={handleChangeForm}
+            error={getErrorMessage(name)}
+            register={register}
           />
         ))}
         <Subtitle>{SUBTITLE}</Subtitle>
         <Text>{SUBTITL_INFO_TEXT}</Text>
-        <BirthdaySelect onChange={handleChangeForm} />
-        <Button title={CREATE_ACC_BUTTON} />
+        <BirthdaySelect onChange={handleChangeForm} register={register} />
+        <Button isValid={isValid} title={CREATE_ACC_BUTTON} />
         <TextWithLink>
           {ACCOUNT_EXIST_TEXT} <Link to={login}>{LINK_TO_LOGIN_TEXT}</Link>
         </TextWithLink>

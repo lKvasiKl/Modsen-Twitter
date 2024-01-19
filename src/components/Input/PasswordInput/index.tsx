@@ -22,9 +22,14 @@ export const PasswordInput = ({
   name,
   label,
   placeholder,
+  error,
+  register,
   onChange,
 }: PasswordInputProps) => {
   const [isPasswordVisible, setPasswordVisible] = useState(false);
+
+  const isError = Boolean(error);
+  const LABEL_TEXT = error ? error : label;
 
   const handleEyeIconClick = () => {
     setPasswordVisible((prevState) => !prevState);
@@ -37,14 +42,13 @@ export const PasswordInput = ({
   };
 
   return (
-    <PasswordInputWrapper>
+    <PasswordInputWrapper $isError={isError}>
       <BaseInput
         type={isPasswordVisible ? "text" : "password"}
-        name={name}
         placeholder={placeholder}
-        onChange={handleChange}
+        {...register(name, { onChange: handleChange })}
       />
-      <Label>{label}</Label>
+      <Label $isError={isError}>{LABEL_TEXT}</Label>
       <PasswordPostfix
         isVisible={isPasswordVisible}
         onClick={handleEyeIconClick}

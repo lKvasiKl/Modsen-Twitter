@@ -1,6 +1,7 @@
 import { InputProps } from "components/Input/types";
 
-export interface InputsConfig extends Omit<InputProps, "onChange"> {}
+export interface InputsConfig
+  extends Omit<InputProps, "onChange" | "register"> {}
 export interface PasswordInputsConfig extends Omit<InputsConfig, "type"> {}
 
 export interface ChangeForm {

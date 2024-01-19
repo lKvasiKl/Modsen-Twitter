@@ -4,16 +4,17 @@ import { InputWrapper } from "components/Input/styled";
 import { Container } from "constants/styles/global";
 import { baseText } from "constants/styles/mixins";
 
+const spaceXS = ({ theme }: DefaultTheme) => theme.spaces.xs;
 const fontWeightS = ({ theme }: DefaultTheme) => theme.fonts.fontWeight.s;
 const fontSizeM = ({ theme }: DefaultTheme) => theme.fonts.fontSize.m;
 
 export const SelectContainer = styled(Container)`
-  justify-content: space-between;
+  gap: ${spaceXS}px;
   width: 100%;
 `;
 
 export const SelectWrapper = styled(InputWrapper)`
-  width: initial;
+  width: 100%;
 `;
 
 export const BdaySelector = styled.select`
@@ -22,10 +23,6 @@ export const BdaySelector = styled.select`
   font-size: ${fontSizeM}px;
   font-weight: ${fontWeightS};
   cursor: pointer;
-  width: 125px;
+  width: 100%;
   border: none;
-`;
-
-export const BdayMonthSelector = styled(BdaySelector)`
-  width: 276px;
 `;
