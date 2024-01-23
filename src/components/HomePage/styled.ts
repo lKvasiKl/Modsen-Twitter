@@ -13,11 +13,14 @@ const spaceXL = ({ theme }: DefaultTheme) => theme.spaces.xl;
 const spaceL = ({ theme }: DefaultTheme) => theme.spaces.l;
 const spaceM = ({ theme }: DefaultTheme) => theme.spaces.m;
 const spaceS = ({ theme }: DefaultTheme) => theme.spaces.s;
+const spaceXS = ({ theme }: DefaultTheme) => theme.spaces.xs;
 const fontWeightXL = ({ theme }: DefaultTheme) => theme.fonts.fontWeight.xl;
 const fontSizeL = ({ theme }: DefaultTheme) => theme.fonts.fontSize.l;
 const lightGray = ({ theme }: DefaultTheme) => theme.colors.lightGray;
 const opacityTwitterBlue = ({ theme }: DefaultTheme) =>
   theme.colors.opacityTwitterBlue;
+const mediaTablet = ({ theme }: DefaultTheme) => theme.media.tablet;
+const mediaMobile = ({ theme }: DefaultTheme) => theme.media.mobile;
 
 const commonButtonStyles = css`
   gap: ${spaceS}px;
@@ -37,8 +40,9 @@ const commonButtonStyles = css`
 
 export const HomePageWrapper = styled(Container)`
   flex-direction: column;
-  height: 100vh;
+  justify-content: space-between;
   width: 100%;
+  height: 100vh;
 `;
 
 export const Main = styled.main`
@@ -46,23 +50,33 @@ export const Main = styled.main`
   ${contentCenter}
 
   gap: ${spaceXL}px;
-  height: 100%;
   width: 100%;
+  height: 100vh;
 `;
 
 export const Banner = styled.img`
   object-fit: cover;
   user-select: none;
-  height: 100%;
+  min-height: 100%;
   width: 50%;
+
+  @media (max-width: ${mediaTablet}px) {
+    display: none;
+  }
 `;
 
 export const Form = styled.form`
   ${flexColumn}
 
   gap: ${spaceL}px;
-  padding: 0 ${spaceM}px;
+  padding: ${spaceM}px;
   width: 100%;
+  min-height: 100%;
+  justify-content: center;
+
+  @media (max-width: ${mediaTablet}px) {
+    align-items: center;
+  }
 `;
 
 export const Title = styled.h1`
@@ -70,6 +84,11 @@ export const Title = styled.h1`
 
   font-weight: ${fontWeightXL};
   font-size: 84px;
+
+  @media (max-width: ${mediaMobile}px) {
+    text-align: center;
+    font-size: 56px;
+  }
 `;
 
 export const Subtitle = styled.h2`
@@ -77,6 +96,10 @@ export const Subtitle = styled.h2`
 
   font-weight: ${fontWeightXL};
   font-size: 42px;
+
+  @media (max-width: ${mediaMobile}px) {
+    font-size: 21px;
+  }
 `;
 
 export const ButtonsWrapper = styled(Container)`
@@ -104,4 +127,8 @@ export const Footer = styled.footer`
   
   gap: ${spaceS}px;
   padding: ${spaceS}px;
+
+  @media (max-width: ${mediaMobile}px) {
+    gap: ${spaceXS}px;
+  }
 `;

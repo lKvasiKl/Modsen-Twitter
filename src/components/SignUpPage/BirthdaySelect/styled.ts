@@ -7,10 +7,15 @@ import { baseText } from "constants/styles/mixins";
 const spaceXS = ({ theme }: DefaultTheme) => theme.spaces.xs;
 const fontWeightS = ({ theme }: DefaultTheme) => theme.fonts.fontWeight.s;
 const fontSizeM = ({ theme }: DefaultTheme) => theme.fonts.fontSize.m;
+const mediaMobile = ({ theme }: DefaultTheme) => theme.media.mobile;
 
 export const SelectContainer = styled(Container)`
   gap: ${spaceXS}px;
   width: 100%;
+
+  @media (max-width: ${mediaMobile}px) {
+    flex-direction: column;
+  }
 `;
 
 export const SelectWrapper = styled(InputWrapper)`

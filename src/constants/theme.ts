@@ -1,4 +1,4 @@
-import { COLORS, FONTS, SPACES } from "./styles";
+import { COLORS, FONTS, SPACES, MEDIA } from "./styles";
 
 const BASE_THEME = {
   colors: {
@@ -9,6 +9,9 @@ const BASE_THEME = {
   },
   spaces: {
     ...SPACES,
+  },
+  media: {
+    ...MEDIA,
   },
 };
 

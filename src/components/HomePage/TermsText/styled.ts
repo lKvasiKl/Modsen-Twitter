@@ -7,6 +7,7 @@ const spaceS = ({ theme }: DefaultTheme) => theme.spaces.s;
 const fontWeightS = ({ theme }: DefaultTheme) => theme.fonts.fontWeight.s;
 const fontSizeXS = ({ theme }: DefaultTheme) => theme.fonts.fontSize.xs;
 const twitterBlueColor = ({ theme }: DefaultTheme) => theme.colors.twitterBlue;
+const mediaMobile = ({ theme }: DefaultTheme) => theme.media.mobile;
 
 export const TermsWrapper = styled(Container)`
   gap: ${spaceS}px;
@@ -28,5 +29,10 @@ export const TermsContent = styled.p`
     &:hover {
       text-decoration: underline;
     }
+  }
+
+  @media (max-width: ${mediaMobile}px) {
+    text-align: center;
+    align-self: center;
   }
 `;

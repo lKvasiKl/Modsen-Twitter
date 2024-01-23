@@ -19,7 +19,7 @@ export const Main = styled.main`
   ${displayFlex}
   ${contentCenter}
   
-  height: 100%;
+  min-height: 100%;
 `;
 
 export const Form = styled.form`
