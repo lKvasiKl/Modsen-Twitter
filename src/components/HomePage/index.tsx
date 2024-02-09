@@ -1,7 +1,10 @@
 import { NavLinks } from "components/NavLinks";
 import { ROUTES } from "constants/routes";
 import { Icon } from "constants/styles/global";
+import { useAppDispatch } from "hooks/useStore";
+import { signUpWithGoogleThunk } from "store/thunks/auth";
 import { TermsText } from "./TermsText";
+import { ClickEvent } from "types";
 
 import {
   BANNER_CONFIG,
@@ -29,6 +32,14 @@ import {
 const { sign_up } = ROUTES;
 
 export const HomePage = () => {
+  const dispatch = useAppDispatch();
+
+  const handleGoogleSignUp = async (event: ClickEvent) => {
+    event.preventDefault();
+
+    dispatch(signUpWithGoogleThunk());
+  };
+
   return (
     <HomePageWrapper>
       <Main>
@@ -38,7 +49,7 @@ export const HomePage = () => {
           <Title>{TITLE}</Title>
           <Subtitle>{SUBTITLE}</Subtitle>
           <ButtonsWrapper>
-            <SignUpButton>
+            <SignUpButton onClick={handleGoogleSignUp}>
               <Icon {...GOOGLE_ICON_CONFIG} />
               {GOOGLE_SIGNUP_TEXT}
             </SignUpButton>

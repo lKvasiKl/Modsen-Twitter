@@ -18,7 +18,7 @@
       "assets/*": ["assets/*"],
       "components/*": ["components/*"],
       "constants/*": ["constants/*"],
-      "firebaseConfig": ["firebaseConfig/*"],
+      "firebaseConfig/*": ["firebaseConfig/*"],
       "hooks/*": ["hooks/*"],
       "layouts/*": ["layouts/*"],
       "pages/*": ["pages/*"],

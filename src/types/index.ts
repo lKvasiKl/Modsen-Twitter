@@ -18,3 +18,5 @@ export interface User {
   photo?: string;
   gender?: Gender;
 }
+
+export type ClickEvent = React.MouseEvent<HTMLButtonElement>;

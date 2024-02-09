@@ -1,4 +1,8 @@
-import { createUserWithEmailAndPassword } from "firebase/auth";
+import {
+  GoogleAuthProvider,
+  createUserWithEmailAndPassword,
+  signInWithPopup,
+} from "firebase/auth";
 import { doc, setDoc } from "firebase/firestore";
 import { format } from "date-fns";
 
@@ -32,4 +36,11 @@ export const signUpWithEmail = async (
   } catch (error) {
     throw error;
   }
+};
+
+export const signInWithGoogle = async () => {
+  const provider = new GoogleAuthProvider();
+  const { user: googleAccount } = await signInWithPopup(auth, provider);
+
+  return googleAccount;
 };
