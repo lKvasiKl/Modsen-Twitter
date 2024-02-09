@@ -1,12 +1,12 @@
 import { Navigate } from "react-router";
-import { useSelector } from "react-redux";
 import { Outlet } from "react-router-dom";
 
 import { isAuthSelector } from "store/selectors/userSelectors";
+import { useAppSelector } from "hooks/useStore";
 import { ROUTES } from "constants/routes";
 
 export const RequireAuth = () => {
-  const isAuth = useSelector(isAuthSelector);
+  const isAuth = useAppSelector(isAuthSelector);
 
   if (isAuth) {
     return <Outlet />;

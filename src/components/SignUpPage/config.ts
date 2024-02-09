@@ -59,7 +59,7 @@ export const DEFAULT_FORM_STATE = {
   phone: "",
   password: "",
   confirmPassword: "",
-  birthdayMonth: "",
-  birthdayDay: "",
-  birthdayYear: "",
+  birthdayMonth: 0,
+  birthdayDay: 0,
+  birthdayYear: 0,
 };

@@ -1,9 +1,11 @@
 import TwitterBackground from "assets/twitter-background.webp";
 import TwitterLogo from "assets/twitter-logo.svg";
 import GoogleLogo from "assets/google-logo.svg";
+import UserPhoto from "assets/userPhoto.svg";
 
 export const IMAGES = {
   twitterBackground: TwitterBackground,
+  defaultUserPhoto: UserPhoto,
 };
 
 export const ICONS = {

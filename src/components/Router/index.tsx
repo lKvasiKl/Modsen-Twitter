@@ -18,12 +18,22 @@ const renderRoutes = (routes: RouterItem[]) => {
 };
 
 //TODO: FALLBACK + NOT FOUND
-export const Router = () => {
+export const PublicRoutes = () => {
   return (
     <Suspense fallback={<div>LOADING...</div>}>
       <Routes>
         {renderRoutes(Object.values(NAVIGATION))}
 
+        <Route element={<div>NOT FOUND</div>} path={notFound} />
+      </Routes>
+    </Suspense>
+  );
+};
+
+export const RequireAuthRoutes = () => {
+  return (
+    <Suspense fallback={<div>LOADING...</div>}>
+      <Routes>
         <Route element={<RequireAuth />}>
           {renderRoutes(Object.values(REQUIRE_AUTH_NAVIGATION))}
         </Route>

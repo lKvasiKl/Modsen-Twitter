@@ -6,7 +6,11 @@ import { Input } from "components/Input";
 import { PasswordInput } from "components/Input/PasswordInput";
 import { Button } from "components/Button";
 import { ROUTES } from "constants/routes";
+import { useFormValidation } from "hooks/useFormValidation";
+import { useAppDispatch } from "hooks/useStore";
+import { signUpWithEmailThunk } from "store/thunks/auth";
 import { BirthdaySelect } from "./BirthdaySelect";
+import { REGISTER_FORM_SCHEMA } from "./validation";
 
 import { ChangeForm } from "./types";
 
@@ -25,19 +29,18 @@ import {
 
 import { Form, Main, Subtitle, Text, TextWithLink, Title } from "./styled";
 
-import { REGISTER_FORM_SCHEMA } from "./validation";
-import { useFormValidation } from "hooks/useFormValidation";
-
 const { login } = ROUTES;
 
 export const SignUpPage = () => {
-  const [_, setForm] = useState(DEFAULT_FORM_STATE);
+  const [form, setForm] = useState(DEFAULT_FORM_STATE);
+  const dispatch = useAppDispatch();
 
   const handleChangeForm = ({ name, value }: ChangeForm) => {
     setForm((prevForm) => ({ ...prevForm, [name]: value }));
   };
 
-  const handleSubmitForm = () => {
+  const handleSubmitForm = async () => {
+    dispatch(signUpWithEmailThunk(form));
     reset();
   };
 

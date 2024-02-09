@@ -18,10 +18,11 @@
       "assets/*": ["assets/*"],
       "components/*": ["components/*"],
       "constants/*": ["constants/*"],
-      "firebase/*": ["firebase/*"],
+      "firebaseConfig": ["firebaseConfig/*"],
       "hooks/*": ["hooks/*"],
       "layouts/*": ["layouts/*"],
       "pages/*": ["pages/*"],
+      "services/*": ["services/*"],
       "store/*": ["store/*"],
       "types/*": ["types/*"],
       "utils/*": ["utils/*"]
@@ -33,6 +34,6 @@
     "noUnusedParameters": true,
     "noFallthroughCasesInSwitch": true
   },
-  "include": ["src", ".eslintrc.js", "vite.config.ts",],
+  "include": ["src", ".eslintrc.js", "vite.config.ts", "firebase.ts",],
   "references": [{ "path": "./tsconfig.node.json" }]
 }

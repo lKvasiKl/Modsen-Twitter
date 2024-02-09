@@ -14,6 +14,10 @@ const Login = lazy(() =>
   import("pages/Login").then(({ Login }) => ({ default: Login })),
 );
 
+const Feed = lazy(() =>
+  import("pages/Feed").then(({ Feed }) => ({ default: Feed })),
+);
+
 const { home, sign_up, login, feed } = ROUTES;
 
 export const NAVIGATION = {
@@ -34,7 +38,7 @@ export const NAVIGATION = {
 export const REQUIRE_AUTH_NAVIGATION = {
   Feed: {
     path: feed,
-    element: <div>FEED</div>,
+    element: <Feed />,
   },
 };
 
