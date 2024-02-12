@@ -9,6 +9,7 @@ import {
   getUserSelector,
   isUserLoadingSelector,
 } from "store/selectors/userSelectors";
+import { Loader } from "components/Loader";
 
 const { profile } = ROUTES;
 
@@ -26,7 +27,7 @@ export const App = () => {
   }, [isAuth, id]);
 
   if (isUserLoading) {
-    return <>LOADING...</>;
+    return <Loader />;
   }
 
   return isAuth ? <RequireAuthRoutes /> : <PublicRoutes />;

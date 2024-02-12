@@ -1,6 +1,7 @@
 import { Suspense } from "react";
 import { Route, Routes } from "react-router-dom";
 
+import { Loader } from "components/Loader";
 import { NAVIGATION, REQUIRE_AUTH_NAVIGATION } from "constants/navigation";
 import { ROUTES } from "constants/routes";
 import { RequireAuth } from "layouts/RequireAuth";
@@ -17,10 +18,10 @@ const renderRoutes = (routes: RouterItem[]) => {
   });
 };
 
-//TODO: FALLBACK + NOT FOUND
+//TODO: NOT FOUND
 export const PublicRoutes = () => {
   return (
-    <Suspense fallback={<div>LOADING...</div>}>
+    <Suspense fallback={<Loader />}>
       <Routes>
         {renderRoutes(Object.values(NAVIGATION))}
 
@@ -32,7 +33,7 @@ export const PublicRoutes = () => {
 
 export const RequireAuthRoutes = () => {
   return (
-    <Suspense fallback={<div>LOADING...</div>}>
+    <Suspense fallback={<Loader />}>
       <Routes>
         <Route element={<RequireAuth />}>
           {renderRoutes(Object.values(REQUIRE_AUTH_NAVIGATION))}
