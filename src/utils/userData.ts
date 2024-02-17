@@ -2,6 +2,10 @@ export const getFirstName = (displayName: string | null) => {
   return displayName?.split(" ")[0] || "";
 };
 
+export const formatPhoneNumber = (phoneNumber: string) => {
+  return phoneNumber.startsWith("+") ? phoneNumber.slice(1) : phoneNumber;
+};
+
 export const createUserData = (
   uid: string,
   email: string,
