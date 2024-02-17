@@ -3,13 +3,14 @@ import { useNavigate } from "react-router-dom";
 
 import { ROUTES } from "constants/routes";
 import { useAppSelector } from "hooks/useStore";
+import { NotificationPopup } from "components/NotificationPopup";
 import { PublicRoutes, RequireAuthRoutes } from "components/Router";
+import { Loader } from "components/Loader";
 import {
   isAuthSelector,
   getUserSelector,
   isUserLoadingSelector,
 } from "store/selectors/userSelectors";
-import { Loader } from "components/Loader";
 
 const { profile } = ROUTES;
 
@@ -30,5 +31,10 @@ export const App = () => {
     return <Loader />;
   }
 
-  return isAuth ? <RequireAuthRoutes /> : <PublicRoutes />;
+  return (
+    <>
+      {isAuth ? <RequireAuthRoutes /> : <PublicRoutes />}
+      <NotificationPopup />
+    </>
+  );
 };

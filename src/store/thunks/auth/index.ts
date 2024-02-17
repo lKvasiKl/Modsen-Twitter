@@ -2,16 +2,27 @@ import { createAsyncThunk } from "@reduxjs/toolkit";
 import { FieldValues } from "react-hook-form";
 import { doc, setDoc } from "firebase/firestore";
 
-import { setError, setUser } from "store/slice/userSlice";
+import { setUser } from "store/slice/userSlice";
 import { signInWithGoogle, signUpWithEmail } from "services/authService";
-import { getUserById } from "services/databaseService";
 import { createUserData, getFirstName } from "utils/userData";
 import { USERS_COLLECTION } from "constants/dbCollectionNames";
+import { setNotification } from "store/slice/appSlice";
 import { IMAGES } from "constants/images";
 import { db } from "firebaseConfig";
 import { User } from "types";
+import {
+  getUserByEmail,
+  getUserById,
+  getUserByPhone,
+} from "services/databaseService";
 
-import { EMAIL_SIGNUP, GOOGLE_SIGNUP, SIGNUP_ERROR } from "./config";
+import {
+  EMAIL_ALREDY_IN_USE_ERROR,
+  EMAIL_SIGNUP,
+  GOOGLE_ACCOUNT_ERROR,
+  GOOGLE_SIGNUP,
+  PHONE_ALREDY_IN_USE_ERROR,
+} from "./config";
 
 const { defaultUserPhoto } = IMAGES;
 
@@ -39,11 +50,25 @@ export const signUpWithEmailThunk = createAsyncThunk(
         photo: defaultUserPhoto,
       };
 
+      const existingEmail = await getUserByEmail(email);
+      if (existingEmail) {
+        throw new Error(EMAIL_ALREDY_IN_USE_ERROR);
+      }
+
+      const existingPhone = await getUserByPhone(phone);
+      if (existingPhone) {
+        throw new Error(PHONE_ALREDY_IN_USE_ERROR);
+      }
+
       const user = await signUpWithEmail(userData, password);
 
       return user;
     } catch (error) {
-      dispatch(setError(SIGNUP_ERROR));
+      dispatch(
+        setNotification({ isVisible: true, message: (error as Error).message }),
+      );
+
+      throw error;
     }
   },
 );
@@ -59,8 +84,7 @@ export const signUpWithGoogleThunk = createAsyncThunk(
       const photo = photoURL || defaultUserPhoto;
 
       if (!displayName || !email) {
-        //TODO NOTIFICATIONS
-        throw new Error("Error with google account");
+        throw new Error(GOOGLE_ACCOUNT_ERROR);
       }
 
       const existedUser = (await getUserById(uid)) as User;
@@ -74,7 +98,11 @@ export const signUpWithGoogleThunk = createAsyncThunk(
         dispatch(setUser(userData));
       }
     } catch (error) {
-      dispatch(setError(SIGNUP_ERROR));
+      dispatch(
+        setNotification({ isVisible: true, message: (error as Error).message }),
+      );
+
+      throw error;
     }
   },
 );

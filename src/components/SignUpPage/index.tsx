@@ -40,7 +40,7 @@ export const SignUpPage = () => {
   };
 
   const handleSubmitForm = async () => {
-    dispatch(signUpWithEmailThunk(form));
+    await dispatch(signUpWithEmailThunk(form));
     reset();
   };
 

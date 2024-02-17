@@ -7,20 +7,20 @@ const fontWeightS = ({ theme }: DefaultTheme) => theme.fonts.fontWeight.s;
 const fontSizeM = ({ theme }: DefaultTheme) => theme.fonts.fontSize.m;
 
 export const GlobalStyle = createGlobalStyle`
-    * {
-        background-color: ${backgroundColor};
-        box-sizing: border-box;
-        user-select: none;
-        text-decoration: none;
-        list-style: none;
-        outline: none;
-        margin: 0;
-        padding: 0;
-    }
+  * {
+      background-color: ${backgroundColor};
+      box-sizing: border-box;
+      user-select: none;
+      text-decoration: none;
+      list-style: none;
+      outline: none;
+      margin: 0;
+      padding: 0;
+  }
     
-    #root {
-      height: 100vh;
-    }
+  #root {
+    height: 100vh;
+  }
 `;
 
 export const Container = styled.div`

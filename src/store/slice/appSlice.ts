@@ -2,10 +2,14 @@ import { PayloadAction, createSlice } from "@reduxjs/toolkit";
 
 import { Theme } from "types";
 
-import { AppInitialState } from "./type";
+import { AppInitialState, Popup } from "./type";
 
 const initialState: AppInitialState = {
   theme: Theme.Light,
+  notification: {
+    isVisible: false,
+    message: "",
+  },
 };
 
 export const appSlice = createSlice({
@@ -15,8 +19,11 @@ export const appSlice = createSlice({
     setTheme: (state: AppInitialState, action: PayloadAction<Theme>) => {
       state.theme = action.payload;
     },
+    setNotification: (state: AppInitialState, action: PayloadAction<Popup>) => {
+      state.notification = action.payload;
+    },
   },
 });
 
-export const { setTheme } = appSlice.actions;
+export const { setTheme, setNotification } = appSlice.actions;
 export const appReducer = appSlice.reducer;

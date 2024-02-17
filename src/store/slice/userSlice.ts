@@ -9,7 +9,6 @@ const initialState: UserInitialState = {
   user: {} as User,
   isAuth: false,
   isLoading: false,
-  isError: "",
 };
 
 export const userSlice = createSlice({
@@ -25,9 +24,6 @@ export const userSlice = createSlice({
       state.isAuth = false;
       state.isLoading = false;
       state.user = {} as User;
-    },
-    setError: (state, action: PayloadAction<string>) => {
-      state.isError = action.payload;
     },
   },
   extraReducers: (builder) => {
@@ -50,5 +46,5 @@ export const userSlice = createSlice({
   },
 });
 
-export const { setUser, setError, removeUser } = userSlice.actions;
+export const { setUser, removeUser } = userSlice.actions;
 export const userReucer = userSlice.reducer;
