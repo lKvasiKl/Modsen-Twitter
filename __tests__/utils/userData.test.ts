@@ -56,7 +56,7 @@ describe("createUserData function", () => {
   it("should set an empty string for phone number if it is null", () => {
     const uid = "123";
     const email = "test@example.com";
-    const name = "John Doe";
+    const name = "Test Testovich";
     const phoneNumber = null;
     const photo = "user.jpg";
 
