@@ -36,7 +36,7 @@ export const INPUTS_PROPS: InputsConfig[] = [
     type: "tel",
     name: "phone",
     label: "Phone",
-    placeholder: "+375 (44) 111-22-33",
+    placeholder: "+375441112233",
   },
 ];
 
