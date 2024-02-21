@@ -53,7 +53,7 @@ export const HomePage = () => {
               <Icon {...GOOGLE_ICON_CONFIG} />
               {GOOGLE_SIGNUP_TEXT}
             </SignUpButton>
-            <SignUpLinkButton to={sign_up}>
+            <SignUpLinkButton to={sign_up} data-cy='signUpLink'>
               {EMAIL_SIGNUP_TEXT}
             </SignUpLinkButton>
           </ButtonsWrapper>

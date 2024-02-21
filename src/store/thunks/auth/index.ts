@@ -4,16 +4,16 @@ import { doc, setDoc } from "firebase/firestore";
 
 import { setUser } from "store/slice/userSlice";
 import { signInWithGoogle, signUpWithEmail } from "services/authService";
-import {
-  createUserData,
-  formatPhoneNumber,
-  getFirstName,
-} from "utils/userData";
 import { USERS_COLLECTION } from "constants/dbCollectionNames";
 import { setNotification } from "store/slice/appSlice";
 import { IMAGES } from "constants/images";
 import { db } from "firebaseConfig";
 import { User } from "types";
+import {
+  createUserData,
+  formatPhoneNumber,
+  getFirstName,
+} from "utils/userData";
 import {
   getUserByEmail,
   getUserById,
@@ -55,13 +55,13 @@ export const signUpWithEmailThunk = createAsyncThunk(
         photo: defaultUserPhoto,
       };
 
-      const existingEmail = await getUserByEmail(email);
-      if (existingEmail) {
+      const existingEmailUser = await getUserByEmail(email);
+      if (existingEmailUser) {
         throw new Error(EMAIL_ALREDY_IN_USE_ERROR);
       }
 
-      const existingPhone = await getUserByPhone(phoneNumber);
-      if (existingPhone) {
+      const existingPhoneUser = await getUserByPhone(phoneNumber);
+      if (existingPhoneUser) {
         throw new Error(PHONE_ALREDY_IN_USE_ERROR);
       }
 

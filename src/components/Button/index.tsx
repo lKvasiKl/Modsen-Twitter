@@ -6,7 +6,7 @@ import { ButtonWrapper } from "./styled";
 
 export const Button = React.memo(({ title, onClick, isValid }: ButtonProps) => {
   return (
-    <ButtonWrapper disabled={!isValid} onClick={onClick}>
+    <ButtonWrapper disabled={!isValid} onClick={onClick} data-cy='button'>
       {title}
     </ButtonWrapper>
   );

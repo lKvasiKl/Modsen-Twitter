@@ -1,0 +1,13 @@
+{
+  "name": "Test",
+  "email": "test.testovich@example.com",
+  "adminEmail": "admin.test@gmail.com",
+  "newEmail": "newAdmin.test@gmail.com",
+  "phone": "+375290841683",
+  "adminPhone": "+375123456789",
+  "password": "password123",
+  "confirmPassword": "password123",
+  "birthdayMonth": "January",
+  "birthdayDay": "1",
+  "birthdayYear": "1990"
+}

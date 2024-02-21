@@ -28,5 +28,5 @@ export const NotificationPopup = () => {
     return null;
   }
 
-  return <Popup>{message}</Popup>;
+  return <Popup data-cy='notification'>{message}</Popup>;
 };

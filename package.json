@@ -9,7 +9,8 @@
     "format": "prettier --write \"./src/**/*.{js,jsx,ts,tsx,json,css,scss,md}\"",
     "lint": "eslint . --ext ts,tsx --report-unused-disable-directives",
     "preview": "vite preview",
-    "test": "jest"
+    "test": "jest",
+    "cypress:open": "cypress open"
   },
   "dependencies": {
     "@hookform/resolvers": "^3.3.4",
@@ -32,11 +33,12 @@
     "@testing-library/react": "^14.2.1",
     "@types/babel__core": "^7",
     "@types/jest": "^29.5.12",
-    "@types/react": "^18.2.37",
+    "@types/react": "^18.2.56",
     "@types/react-dom": "^18.2.15",
     "@typescript-eslint/eslint-plugin": "^6.10.0",
     "@typescript-eslint/parser": "^6.10.0",
     "@vitejs/plugin-react": "^4.2.1",
+    "cypress": "^13.6.4",
     "date-fns": "^3.3.1",
     "eslint": "^8.53.0",
     "eslint-plugin-prettier": "^5.0.1",
