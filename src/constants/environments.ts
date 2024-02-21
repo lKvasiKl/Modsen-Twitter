@@ -10,16 +10,17 @@ export const ENV_VARIABLE_KEYS = {
 } as const;
 
 const ENV_VARIABLES: EnvVariables = {
-  [ENV_VARIABLE_KEYS.firebaseApiKey]: process.env.VITE_FIREBASE_API_KEY || "",
+  [ENV_VARIABLE_KEYS.firebaseApiKey]:
+    import.meta.env.VITE_FIREBASE_API_KEY || "",
   [ENV_VARIABLE_KEYS.firebaseAuthDomain]:
-    process.env.VITE_FIREBASE_AUTH_DOMAIN || "",
+    import.meta.env.VITE_FIREBASE_AUTH_DOMAIN || "",
   [ENV_VARIABLE_KEYS.firebaseProjectId]:
-    process.env.VITE_FIREBASE_PROJECT_ID || "",
+    import.meta.env.VITE_FIREBASE_PROJECT_ID || "",
   [ENV_VARIABLE_KEYS.firebaseStorageBucket]:
-    process.env.VITE_FIREBASE_STORAGE_BUCKET || "",
+    import.meta.env.VITE_FIREBASE_STORAGE_BUCKET || "",
   [ENV_VARIABLE_KEYS.firebaseMessagingSenderId]:
-    process.env.VITE_FIREBASE_MESSAGING_SENDER_ID || "",
-  [ENV_VARIABLE_KEYS.firebaseAppId]: process.env.VITE_FIREBASE_APP_ID || "",
+    import.meta.env.VITE_FIREBASE_MESSAGING_SENDER_ID || "",
+  [ENV_VARIABLE_KEYS.firebaseAppId]: import.meta.env.VITE_FIREBASE_APP_ID || "",
 };
 
 export const getEnvVariables = (key: EnvVariableKeys): string =>

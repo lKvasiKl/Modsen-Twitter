@@ -4,6 +4,7 @@ export const FONTS = {
     robotoSerif: "Roboto Serif",
   },
   fontSize: {
+    xl: 30,
     l: 20,
     m: 18,
     s: 16,

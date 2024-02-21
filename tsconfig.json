@@ -18,8 +18,11 @@
       "assets/*": ["assets/*"],
       "components/*": ["components/*"],
       "constants/*": ["constants/*"],
-      "firebase/*": ["firebase/*"],
+      "firebaseConfig/*": ["firebaseConfig/*"],
+      "hooks/*": ["hooks/*"],
+      "layouts/*": ["layouts/*"],
       "pages/*": ["pages/*"],
+      "services/*": ["services/*"],
       "store/*": ["store/*"],
       "types/*": ["types/*"],
       "utils/*": ["utils/*"]
@@ -29,8 +32,15 @@
     "strict": true,
     "noUnusedLocals": true,
     "noUnusedParameters": true,
-    "noFallthroughCasesInSwitch": true
+    "noFallthroughCasesInSwitch": true,
+    "allowSyntheticDefaultImports": true
   },
-  "include": ["src", ".eslintrc.js", "vite.config.ts",],
+  "include": [
+    "src", 
+    ".eslintrc.js", 
+    "vite.config.ts", 
+    "firebase.ts", 
+    "cypress.config.ts",
+    "cypress"],
   "references": [{ "path": "./tsconfig.node.json" }]
 }

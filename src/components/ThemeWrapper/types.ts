@@ -1,9 +1,7 @@
-import { ReactNode } from "react";
-
 import { Theme } from "types";
 
 export interface Children {
-  children: ReactNode;
+  children: React.ReactNode;
 }
 
 export interface ThemeWrapperProps extends Children {
