@@ -23,6 +23,7 @@ import {
 } from "./config";
 
 import { Form, LogoIcon, Main, TextWithLink, Title } from "./styled";
+import { logInWithEmailOrPhoneThunk } from "store/thunks/auth";
 
 const { name, label, type, placeholder } = INPUT_PROPS;
 const {
@@ -41,7 +42,7 @@ export const LogInPage = () => {
   };
 
   const handleSubmitForm = async () => {
-    // await dispatch(signUpWithEmailThunk(form));
+    await dispatch(logInWithEmailOrPhoneThunk(form));
     reset();
   };
 

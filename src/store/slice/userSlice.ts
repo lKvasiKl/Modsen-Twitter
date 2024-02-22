@@ -1,7 +1,10 @@
 import { PayloadAction, createSlice } from "@reduxjs/toolkit";
 
 import { User } from "types/index";
-import { signUpWithEmailThunk } from "store/thunks/auth";
+import {
+  logInWithEmailOrPhoneThunk,
+  signUpWithEmailThunk,
+} from "store/thunks/auth";
 
 import { UserInitialState } from "./type";
 
@@ -40,6 +43,22 @@ export const userSlice = createSlice({
       state.isLoading = true;
     });
     builder.addCase(signUpWithEmailThunk.rejected, (state) => {
+      state.isAuth = false;
+      state.isLoading = false;
+    });
+    builder.addCase(
+      logInWithEmailOrPhoneThunk.fulfilled,
+      (state, action: PayloadAction<User | undefined>) => {
+        state.isAuth = true;
+        state.isLoading = false;
+        state.user = action.payload || ({} as User);
+      },
+    );
+    builder.addCase(logInWithEmailOrPhoneThunk.pending, (state) => {
+      state.isAuth = false;
+      state.isLoading = true;
+    });
+    builder.addCase(logInWithEmailOrPhoneThunk.rejected, (state) => {
       state.isAuth = false;
       state.isLoading = false;
     });

@@ -2,6 +2,7 @@ import { collection, getDocs, query, where } from "firebase/firestore";
 
 import { USERS_COLLECTION } from "constants/dbCollectionNames";
 import { db } from "firebaseConfig";
+import { formatPhoneNumber } from "utils/userData";
 
 export const getUserByEmail = async (email: string) => {
   const queryConfig = query(
@@ -16,9 +17,11 @@ export const getUserByEmail = async (email: string) => {
 };
 
 export const getUserByPhone = async (phone: string) => {
+  const phoneNumber = formatPhoneNumber(phone);
+
   const queryConfig = query(
     collection(db, USERS_COLLECTION),
-    where("phone", "==", phone),
+    where("phone", "==", phoneNumber),
   );
 
   const querySnapshot = await getDocs(queryConfig);
